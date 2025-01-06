@@ -57,7 +57,7 @@ download_and_execute_script() {
         echo -e "\e[1;33m[!] Script already exists: /data/SubSystem/start_debian.sh\e[0m"
         echo -e "\e[1;33m[!] Skipping download...\e[0m"
     else
-        wget -O "/data/SubSystem/start_debian.sh" "https://raw.githubusercontent.com/LinuxDroidMaster/Termux-Desktops/main/scripts/chroot/debian/start_debian.sh"
+        wget -O "/data/SubSystem/start_debian.sh" "https://raw.githubusercontent.com/easleyclaymore/Termux-Desktops/refs/heads/main/scripts/chroot/debian/start_debian.sh"
         if [ $? -eq 0 ]; then
             success "Script downloaded successfully: /data/SubSystem/start_debian.sh"
             progress "Setting script permissions..."
@@ -192,7 +192,7 @@ install_lxde() {
 download_startxfce4_script() {
     progress "Downloading startxfce4_chrootDebian.sh script..."
     if [ "$DE_OPTION" -eq 1 ]; then
-        wget -O "./startxfce4_chrootDebian.sh" "https://raw.githubusercontent.com/LinuxDroidMaster/Termux-Desktops/main/scripts/chroot/debian/startxfce4_chrootDebian.sh"
+        wget -O "./startxfce4_chrootDebian.sh" "https://raw.githubusercontent.com/easleyclaymore/Termux-Desktops/refs/heads/main/scripts/chroot/debian/startxfce4_chrootDebian.sh"
         if [ $? -eq 0 ]; then
             success "startxfce4_chrootDebian.sh script downloaded successfully"
         else

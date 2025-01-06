@@ -53,15 +53,15 @@ extract_file() {
 # Function to download and execute script
 download_and_execute_script() {
     progress "Downloading script..."
-    if [ -e "/data/local/tmp/start_debian.sh" ]; then
-        echo -e "\e[1;33m[!] Script already exists: /data/local/tmp/start_debian.sh\e[0m"
+    if [ -e "/data/SubSystem/start_debian.sh" ]; then
+        echo -e "\e[1;33m[!] Script already exists: /data/SubSystem/start_debian.sh\e[0m"
         echo -e "\e[1;33m[!] Skipping download...\e[0m"
     else
-        wget -O "/data/local/tmp/start_debian.sh" "https://raw.githubusercontent.com/LinuxDroidMaster/Termux-Desktops/main/scripts/chroot/debian/start_debian.sh"
+        wget -O "/data/SubSystem/start_debian.sh" "https://raw.githubusercontent.com/LinuxDroidMaster/Termux-Desktops/main/scripts/chroot/debian/start_debian.sh"
         if [ $? -eq 0 ]; then
-            success "Script downloaded successfully: /data/local/tmp/start_debian.sh"
+            success "Script downloaded successfully: /data/SubSystem/start_debian.sh"
             progress "Setting script permissions..."
-            chmod +x "/data/local/tmp/start_debian.sh"
+            chmod +x "/data/SubSystem/start_debian.sh"
             success "Script permissions set"
         else
             echo -e "\e[1;31m[!] Error downloading script. Exiting...\e[0m"
@@ -73,7 +73,7 @@ download_and_execute_script() {
 # Function to configure Debian chroot environment
 configure_debian_chroot() {
     progress "Configuring Debian chroot environment..."
-    DEBIANPATH="/data/local/tmp/chrootDebian"
+    DEBIANPATH="/data/SubSystem/chrootDebian"
 
     # Check if DEBIANPATH directory exists
     if [ ! -d "$DEBIANPATH" ]; then
@@ -204,7 +204,7 @@ download_startxfce4_script() {
 
 modify_startfile_with_username() {
     success "Set start_debian.sh file with user name..."
-    sed -i "s/droidmaster/$USERNAME/g" "$DEBIANPATH/../start_debian.sh"
+    sed -i "s/alin/$USERNAME/g" "$DEBIANPATH/../start_debian.sh"
 }
 
 # Main function
@@ -213,7 +213,7 @@ main() {
         echo -e "\e[1;31m[!] This script must be run as root. Exiting...\e[0m"
         goodbye
     else
-        download_dir="/data/local/tmp/chrootDebian"
+        download_dir="/data/SubSystem/chrootDebian"
         if [ ! -d "$download_dir" ]; then
             mkdir -p "$download_dir"
             success "Created directory: $download_dir"

@@ -1,7 +1,7 @@
 #!/bin/sh
 
 #Path of DEBIAN rootfs
-DEBIANPATH="/data/local/tmp/chrootDebian"
+DEBIANPATH="/data/SubSystem/chrootDebian"
 
 # Fix setuid issue
 busybox mount -o remount,dev,suid /data

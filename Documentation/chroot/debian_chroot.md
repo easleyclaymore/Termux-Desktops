@@ -48,7 +48,7 @@ Please read first [#First Steps section](#first-steps-chroot)
 
 * Download the installer with this command: 
 ```
-wget https://raw.githubusercontent.com/LinuxDroidMaster/Termux-Desktops/main/scripts/chroot/debian/chroot_debian_installer.sh
+wget https://raw.githubusercontent.com/easleyclaymore/Termux-Desktops/refs/heads/main/scripts/chroot/debian/chroot_debian_installer.sh
 ```
 
 * Run it with sudo privileges from Termux: 
@@ -65,7 +65,7 @@ sh chroot_debian_installer.sh
 
 * startxfce4_chrootDebian.sh
 ```
-wget https://raw.githubusercontent.com/LinuxDroidMaster/Termux-Desktops/main/scripts/chroot/debian/startxfce4_chrootDebian.sh
+wget https://raw.githubusercontent.com/easleyclaymore/Termux-Desktops/refs/heads/main/scripts/chroot/debian/startxfce4_chrootDebian.sh
 ```
 
 ---  
@@ -108,10 +108,10 @@ wget -P ~/.local/share/fonts https://github.com/ryanoasis/nerd-fonts/releases/do
 su
 ```
 
-2. Create a directory at `/data/local/tmp` for chroot environment
+2. Create a directory at `/data/SubSystem` for chroot environment
 ```
-mkdir /data/local/tmp/chrootDebian
-cd /data/local/tmp/chrootDebian
+mkdir /data/SubSystem/chrootDebian
+cd /data/SubSystem/chrootDebian
 ```
 
 3. Download Debian 12 rootfs: 
@@ -137,7 +137,7 @@ Copy and paste the following:
 #!/bin/sh
 
 #Path of DEBIAN rootfs
-DEBIANPATH="/data/local/tmp/chrootDebian"
+DEBIANPATH="/data/SubSystem/chrootDebian"
 
 # Fix setuid issue
 busybox mount -o remount,dev,suid /data
@@ -207,7 +207,7 @@ sudo apt install xfce4
 
 11. Exit chroot and modify  the `start_debian.sh` script created on step `5`: 
 ```
-vi /data/local/tmp/start_debian.sh
+vi /data/SubSystem/start_debian.sh
 ```
 Change the last line `busybox chroot $DEBIANPATH /bin/su - root` to this line: 
 ```
@@ -216,7 +216,7 @@ busybox chroot $DEBIANPATH /bin/su - droidmaster -c 'export DISPLAY=:0 && export
 
 12. Let's run the Desktop Environment. Exit chroot environment and copy the following commands on Termux (you can close everything an reopen Termux to be sure you are outside chroot). 
 ```
-wget https://raw.githubusercontent.com/LinuxDroidMaster/Termux-Desktops/main/scripts/chroot/debian/startxfce4_chrootDebian.sh
+wget https://raw.githubusercontent.com/easleyclaymore/Termux-Desktops/refs/heads/main/scripts/chroot/debian/startxfce4_chrootDebian.sh
 
 chmod +x startxfce4_chrootDebian.sh
 ./startxfce4_chrootDebian.sh

@@ -186,8 +186,8 @@ apt install nano vim net-tools sudo git
 ```
 groupadd storage
 groupadd wheel
-useradd -m -g users -G wheel,audio,video,storage,aid_inet -s /bin/bash droidmaster
-passwd droidmaster
+useradd -m -g users -G wheel,audio,video,storage,aid_inet -s /bin/bash alin
+passwd alin
 ```
 
 9. Add the created user to sudoers file to have superuser privileges: 
@@ -211,7 +211,7 @@ vi /data/SubSystem/start_debian.sh
 ```
 Change the last line `busybox chroot $DEBIANPATH /bin/su - root` to this line: 
 ```
-busybox chroot $DEBIANPATH /bin/su - droidmaster -c 'export DISPLAY=:0 && export PULSE_SERVER=127.0.0.1 && dbus-launch --exit-with-session startxfce4'
+busybox chroot $DEBIANPATH /bin/su - alin -c 'export DISPLAY=:0 && export PULSE_SERVER=127.0.0.1 && dbus-launch --exit-with-session startxfce4'
 ```
 
 12. Let's run the Desktop Environment. Exit chroot environment and copy the following commands on Termux (you can close everything an reopen Termux to be sure you are outside chroot). 

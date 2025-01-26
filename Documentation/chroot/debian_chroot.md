@@ -57,7 +57,7 @@ su
 chmod +x chroot_debian_installer.sh
 sh chroot_debian_installer.sh
 ```
-
+sudo apt install tigervnc-standalone-server tigervnc-common tigervnc-xorg-extension tigervnc-viewer
 ---  
 <br>
 

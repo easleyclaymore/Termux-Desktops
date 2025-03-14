@@ -45,7 +45,7 @@ pkg install pulseaudio
 - **Enter Termux super user terminal with the command `su`**
 - **Navigate to the folder where you want to install Arch Chroot and download the rootfs tar ball.**
 ```
-cd /data/local/tmp
+cd /data/SubSystem
 wget http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
 ```
 - **Create a folder to uncompress the file:**
@@ -53,7 +53,7 @@ wget http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
 mkdir chrootarch
 cd chrootarch
 
-tar xvf /data/local/tmp/ArchLinuxARM-aarch64-latest.tar.gz --numeric-owner
+tar xvf /data/SubSystem/ArchLinuxARM-aarch64-latest.tar.gz --numeric-owner
 ```
 
 - **Create needed folders:**
@@ -90,13 +90,13 @@ mv -vf hosts etc/hosts
 
 - **Create the start script:**
 ```
-cd /data/local/tmp
+cd /data/SubSystem
 vi start_arch.sh
 ```
 ```
 #!/bin/sh
 
-mnt="/data/local/tmp/chrootarch"
+mnt="/data/SubSystem/chrootarch"
 busybox mount -o remount,dev,suid /data
 
 mount -o bind /dev $mnt/dev/
@@ -149,12 +149,12 @@ pacman -Syu
 pacman -S vim net-tools sudo git
 ```
 
-- **Create a new user, in this case `droidmaster`**
+- **Create a new user, in this case `alin`**
 ```
 groupadd storage
 groupadd wheel
-useradd -m -g users -G wheel,audio,video,storage,aid_inet -s /bin/bash droidmaster
-passwd droidmaster
+useradd -m -g users -G wheel,audio,video,storage,aid_inet -s /bin/bash alin
+passwd qq
 ```
 
 - Add the user to `sudoers` file so you can execute `sudo` commands
@@ -163,7 +163,7 @@ nano /etc/sudoers
 ```
 ```
 # Paste this 
-droidmaster  ALL=(ALL:ALL) ALL
+alin  ALL=(ALL:ALL) ALL
 ```
 
 - **Fix locales to avoid weird characters:**
@@ -191,12 +191,12 @@ sudo pacman -S xfce4 xfce4-terminal
 vi start_arch.sh
 
 #busybox chroot $mnt /bin/su - root
-busybox chroot $mnt /bin/su - droidmaster -c "export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713 && dbus-launch --exit-with-session startxfce4"
+busybox chroot $mnt /bin/su - alin -c "export DISPLAY=:0 PULSE_SERVER=tcp:127.0.0.1:4713 && dbus-launch --exit-with-session startxfce4"
 ```
 
 - **Let's run the Desktop Environment. Exit chroot environment and copy the following commands on Termux (you can close everything an reopen Termux to be sure you are outside chroot).** 
 ```
-wget https://raw.githubusercontent.com/LinuxDroidMaster/Termux-Desktops/main/scripts/chroot/arch/startxfce4_chrootArch.sh
+wget https://raw.githubusercontent.com/easleyclaymore/Termux-Desktops/main/scripts/chroot/arch/startxfce4_chrootArch.sh
 
 chmod +x startxfce4_chrootArch.sh
 ./startxfce4_chrootArch.sh

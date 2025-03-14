@@ -45,7 +45,7 @@ pkg install pulseaudio
 - **Enter Termux super user terminal with the command `su`**
 - **Navigate to the folder where you want to install Arch Chroot and download the rootfs tar ball.**
 ```
-cd /data/local/tmp
+cd /data/SubSystem
 wget http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
 ```
 - **Create a folder to uncompress the file:**
@@ -53,7 +53,7 @@ wget http://os.archlinuxarm.org/os/ArchLinuxARM-aarch64-latest.tar.gz
 mkdir chrootarch
 cd chrootarch
 
-tar xvf /data/local/tmp/ArchLinuxARM-aarch64-latest.tar.gz --numeric-owner
+tar xvf /data/SubSystem/ArchLinuxARM-aarch64-latest.tar.gz --numeric-owner
 ```
 
 - **Create needed folders:**
@@ -90,13 +90,13 @@ mv -vf hosts etc/hosts
 
 - **Create the start script:**
 ```
-cd /data/local/tmp
+cd /data/SubSystem
 vi start_arch.sh
 ```
 ```
 #!/bin/sh
 
-mnt="/data/local/tmp/chrootarch"
+mnt="/data/SubSystem/chrootarch"
 busybox mount -o remount,dev,suid /data
 
 mount -o bind /dev $mnt/dev/
